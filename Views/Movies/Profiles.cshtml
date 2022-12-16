@@ -12,15 +12,17 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
 	@foreach (var profile in Model)
 	{
-		<div class="col">
-			<div class="card h-100">
-				<img src="~/images/@profile.ImageName" class="card-img-top" alt="...">
+		<div class="row-cols-1">
+			<div class="card" style="width: 220px">
+				<img src="~/images/@profile.ImageName" alt="..." height="200" >
 				<div class="card-body">
-					<h5 class="card-title">Заголовок карточки</h5>
-					<p class="card-text">Это более широкая карта с вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>
+					<h5 class="card-title">@profile.Name</h5>
 				</div>
 				<div class="card-footer">
-					<small class="text-muted">Последнее обновление 3 мин. назад</small>
+					<a href="@Url.Action("Watched", "Movies", new {id = profile.Id})"
+					   class="btn btn-outline-primary">
+						Выбрать
+					</a>
 				</div>
 			</div>
 		</div>		
