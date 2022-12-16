@@ -1,13 +1,11 @@
 ﻿using MovieRecommender.Models;
 
-namespace MovieRecommender.Services
+namespace MovieRecommender.Services;
+
+public interface IProfileService
 {
-    public interface IProfileService
-    {
-        Profile GetProfileById(int id);
+    List<Profile> GetProfiles { get; }
+    Profile GetProfileById(int id);
 
-        List<(int movieId, int movieRating)> GetProfileWatchedMovies(int id);
-
-        List<Profile> GetProfiles { get; }
-    }
+    List<(int movieId, int movieRating)> GetProfileWatchedMovies(int id);
 }

@@ -5,26 +5,45 @@
 @{
 }
 
-<hr />
+<hr/>
 <h3>Выберите профиль</h3>
-<br />
+<br/>
 
-<div class="row">
-    @foreach (var profile in Model)
-    {
-	    <div class="card m-2" style="width: 200px">
-			<img class="card-img-top rounded mt-2" src="~/images/@profile.ImageName" height="150" alt="">
-		    <div class="card-body">
-				<h4 class="card-title">@profile.Name</h4>
-			    <a href="@Url.Action("Watched", "Movies", new {id = profile.Id})" 
-			       class="btn btn-primary">Выбрать</a>
-		    </div>
-	    </div>
-    }
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	@foreach (var profile in Model)
+	{
+		<div class="col">
+			<div class="card h-100">
+				<img src="~/images/@profile.ImageName" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Заголовок карточки</h5>
+					<p class="card-text">Это более широкая карта с вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted">Последнее обновление 3 мин. назад</small>
+				</div>
+			</div>
+		</div>		
+	}
+
 </div>
-<br />
-<br />
-<hr />
+@*<div class="row">
+	
+		<div class="card m-2" style="width: 200px">
+			<img class="card-img-top rounded mt-2" src="~/images/@profile.ImageName" height="150" alt="">
+			<div class="card-body">
+				<h4 class="card-title">@profile.Name</h4>
+				<a href="@Url.Action("Watched", "Movies", new {id = profile.Id})"
+				   class="btn btn-primary">
+					Выбрать
+				</a>
+			</div>
+		</div>
+	}
+</div>*@
+<br/>
+<br/>
+<hr/>
 <button type="button" class="btn breadcrumb">
-    <span class="glyphicon glyphicon-dashboard"></span> Редактирование профилей
+	<span class="glyphicon glyphicon-dashboard"></span> Редактирование профилей
 </button>

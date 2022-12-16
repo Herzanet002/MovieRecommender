@@ -1,11 +1,9 @@
-﻿namespace MovieRecommender.DataStructures
+﻿namespace MovieRecommender.DataStructures;
+
+public class MovieRating
 {
-    public class MovieRating
-    {
-        public string userId;
+    public bool Label;
 
-        public string movieId;
-
-        public bool Label;
-    }
+    public string movieId;
+    public string userId;
 }

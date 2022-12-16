@@ -1,9 +1,8 @@
-namespace MovieRecommender.Models
-{
-    public class ErrorViewModel
-    {
-        public string RequestId { get; set; }
+namespace MovieRecommender.Models;
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-    }
+public class ErrorViewModel
+{
+    public string RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }

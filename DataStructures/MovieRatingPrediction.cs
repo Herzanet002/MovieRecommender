@@ -1,9 +1,8 @@
-﻿namespace MovieRecommender.DataStructures
-{
-    public class MovieRatingPrediction
-    {
-        public bool Label;
+﻿namespace MovieRecommender.DataStructures;
 
-        public float Score;
-    }
+public class MovieRatingPrediction
+{
+    public bool Label;
+
+    public float Score;
 }

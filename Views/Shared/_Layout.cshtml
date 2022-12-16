@@ -1,51 +1,51 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MovieRecommender</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MovieRecommender.styles.css" asp-append-version="true" />
-    <environment include="Development">
-	    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-	    <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-	    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-	          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-	          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-	    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>@ViewData["Title"] - MovieRecommender</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+	<link rel="stylesheet" href="~/MovieRecommender.styles.css" asp-append-version="true"/>
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" href="~/css/site.css"/>
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+		      asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+		      asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
+		<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
+	</environment>
 </head>
 <body>
-    <header>
-	    <nav class="navbar navbar-light bg-light mb-3 box-shadow navbar-expand-sm">
-		    <div class="container">
-                <a class="navbar-brand" href="@Url.Action("Profiles", "Movies")">
-				    <img src="~/images/film.png" width="30" height="30" class="d-inline-block align-top" alt="">
-				    MovieRecommender
-			    </a>
-		    </div>
-		    
-	    </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<header>
+	<nav class="navbar navbar-light bg-light mb-3 box-shadow navbar-expand-sm">
+		<div class="container">
+			<a class="navbar-brand" href="@Url.Action("Profiles", "Movies")">
+				<img src="~/images/film.png" width="30" height="30" class="d-inline-block align-top" alt="">
+				MovieRecommender
+			</a>
+		</div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MovieRecommender
-        </div>
-    </footer>
+	</nav>
+</header>
+<div class="container">
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+</div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<footer class="border-top footer text-muted">
+	<div class="container">
+		&copy; 2022 - MovieRecommender
+	</div>
+</footer>
 
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>
