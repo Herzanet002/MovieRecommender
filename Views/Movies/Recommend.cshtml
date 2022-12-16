@@ -1,0 +1,95 @@
+﻿@using MovieRecommender.Models
+@model MovieRecommender.Models.Profile
+@{
+    ViewBag.Title = "Recommend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var profile = Model;
+    var watchedMovie = ViewData["watchedmovies"] as List<Movie>;
+    var movieRatings = ViewData["ratings"] as List<(int movieId, float score)>;
+    var trendingMovie = ViewData["trendingmovies"] as List<Movie>;
+}
+<div class="row">
+	<div class="col-sm-3">
+        <img src="~/images/@profile.ImageName" width="50" height="50" align="bottom" class="rounded" title="@profile.Name profile" />
+        <h4> @profile.Name </h4>
+    </div>
+</div>
+<hr />
+
+<br />
+<h3 style="color:brown"><b>Ваши последние просмотренные фильмы</b></h3>
+<div class="row">
+    @foreach (var movie in watchedMovie)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-block">
+                    <h3 class="card-title">@movie.Name</h3>
+                    @{
+                        var thumbsup = false;
+                        foreach (var (movieId, movieRating) in profile.ProfileMovieRatings)
+                        {
+                            if (movieId == movie.Id)
+                            {
+                                if (movieRating >= 4)
+                                {
+                                    thumbsup = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    @if (thumbsup)
+                    {
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                    }
+                    <a href="@Url.Action("Watch", "Movies")" class="btn-xs btn-primary">Смотреть снова</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />
+<h3 style="color:brown"><b>Самые кассовые фильмы за все время (рекомендуется)</b></h3>
+<div class="row">
+
+	@{
+		System.Diagnostics.Debug.Assert(trendingMovie != null, nameof(trendingMovie) + " != null");
+	}
+	@foreach (var movie in trendingMovie)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-block">
+                    <h3 class="card-title">@movie.Name</h3>
+                    @{
+                        foreach ((var movieId, var normalizedScore) in movieRatings)
+                        {
+                            if (movieId == movie.Id)
+                            {
+
+                                var formatted = normalizedScore.ToString("0.##\\%");
+                                <span class="glyphicon glyphicon-fire"></span>@formatted;
+                            }
+                        }
+                    }
+                    <a href="@Url.Action("Watch", "Movies")" class="btn-xs btn-primary">Play Movie</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<hr />
+<button type="button" class="btn breadcrumb" id="select" onclick="location.href='@Url.Action("Recommend", "Movies", new {id = profile.Id})'">
+    <span class="glyphicon glyphicon-fire"></span> Рекомендуемое
+</button>
+<button type="button" class="btn breadcrumb" id="select" onclick="location.href='@Url.Action("Profiles", "Movies")'">
+    <span class="glyphicon glyphicon-dashboard"></span> Сменить профиль
+</button>
